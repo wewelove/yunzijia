@@ -73,6 +73,10 @@ function handleLogout() {
       {{ JSON.stringify(userInfo, null, 2) }}
     </view>
 
+    <view class="mt-3 break-all px-3 text-center">
+      >{{ username }}
+    </view>
+
     <view class="mt-[60vh] px-3">
       <view class="m-auto w-160px text-center">
         <button v-if="tokenStore.hasLogin" type="warn" class="w-full" @click="handleLogout">
@@ -83,6 +87,5 @@ function handleLogout() {
         </button>
       </view>
     </view>
-    <view>{{ username }}</view>
   </view>
 </template>
