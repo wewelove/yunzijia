@@ -14,12 +14,14 @@ const userStore = useUserStore()
 const tokenStore = useTokenStore()
 // 使用storeToRefs解构userInfo
 const { userInfo } = storeToRefs(userStore)
-const username = ref('未获取用户信息')
+const username = ref('')
+const openid = ref('')
 
 qing.call('getPersonInfo', {
   success(res) {
     console.log(JSON.stringify(res))
     username.value = res.data.name
+    openid.value = res.data.openId
   },
 })
 
@@ -74,7 +76,7 @@ function handleLogout() {
     </view>
 
     <view class="mt-3 break-all px-3 text-center">
-      >{{ username }}
+      当前用户: {{ username }}, {{ openid }}
     </view>
 
     <view class="mt-[60vh] px-3">
