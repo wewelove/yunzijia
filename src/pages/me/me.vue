@@ -15,6 +15,12 @@ const tokenStore = useTokenStore()
 // 使用storeToRefs解构userInfo
 const { userInfo } = storeToRefs(userStore)
 
+qing.call('getPersonInfo', {
+  success : function(res){
+    alert(JSON.stringify(res))
+  }
+});
+
 // 微信小程序下登录
 async function handleLogin() {
   // #ifdef MP-WEIXIN
