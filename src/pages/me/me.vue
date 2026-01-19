@@ -14,12 +14,14 @@ const userStore = useUserStore()
 const tokenStore = useTokenStore()
 // 使用storeToRefs解构userInfo
 const { userInfo } = storeToRefs(userStore)
+const username = ref('未获取用户信息')
 
 qing.call('getPersonInfo', {
-  success : function(res){
-    alert(JSON.stringify(res))
-  }
-});
+  success(res) {
+    console.log(JSON.stringify(res))
+    username.value = res.data.name
+  },
+})
 
 // 微信小程序下登录
 async function handleLogin() {
@@ -81,5 +83,6 @@ function handleLogout() {
         </button>
       </view>
     </view>
+    <view>{{ username }}</view>
   </view>
 </template>
